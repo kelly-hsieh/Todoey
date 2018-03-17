@@ -12,9 +12,15 @@ class TodoListViewController: UITableViewController {
     
     var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demigorgon"]
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let items = defaults.array(forKey:"TodoListArray") as? [String] {
+        itemArray = items
+        
+    }
     }
 
     //Mark: Tableview Datasource Methods
@@ -59,6 +65,7 @@ class TodoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             //what will happen once user clicks Add Item on our alert
             self.itemArray.append(textField.text!) //added to array, but does not show up without reloading.
+            self.defaults.set(self.itemArray, forKey: "TodoListArray") //save the array to defaults. but saving it does not mean that it will show up. It still has to be retrieved from defaults.
             self.tableView.reloadData()
         }
         
