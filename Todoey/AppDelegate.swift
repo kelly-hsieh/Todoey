@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //print(Realm.Configuration.defaultConfiguration.fileURL) //prints out where the Realm file is stored
         
-       
         
         do{
             _ = try Realm()
